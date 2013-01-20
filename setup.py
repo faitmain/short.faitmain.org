@@ -27,7 +27,7 @@ setup(name='errli',
     include_package_data=True,
     zip_safe=False,
     install_requires=['cornice', 'PasteScript', 'WebTest', 'SQLAlchemy',
-                      'BeautifulSoup'],
+                      'BeautifulSoup', 'unidecode'],
     entry_points="""\
     [paste.app_factory]
     main = errli:main
