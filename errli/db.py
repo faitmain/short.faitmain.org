@@ -10,6 +10,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Integer, String, Text
 from sqlalchemy.sql import text
 
+from util import slugify
+
 
 _Base = declarative_base()
 
@@ -86,7 +88,7 @@ def _smart(url, tries):
     if tries > 0:
         short += '-' + str(tries)
 
-    return short
+    return slugify(short)
 
 
 class SQLStorage(object):
