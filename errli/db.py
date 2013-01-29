@@ -84,7 +84,13 @@ def _smart(url, tries):
              if len(word) > 4 and word[0] != '&']
 
     # that works for Sphinx :)
-    short = words[0] + '-' + words[1]
+    if len(words) > 1:
+        short = words[0] + '-' + words[1]
+    elif len(words) == 1:
+        short = words[0]
+    else:
+        return url
+
     if tries > 0:
         short += '-' + str(tries)
 
