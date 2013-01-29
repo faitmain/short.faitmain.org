@@ -30,3 +30,12 @@ class ViewTests(unittest.TestCase):
         res = get_url(request)
         self.assertEqual(res.status_int, 302)
         self.assertEqual(res.location, url)
+
+    def test_url_2(self):
+        request = testing.DummyRequest()
+        url = 'https://github.com/b2renger/TheMidst'
+        request.body = url
+
+        result = new_url(request)
+        key = result['short']
+        self.assertEqual(key, 'b2rengerthemidst-github')
