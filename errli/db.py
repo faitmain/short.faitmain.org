@@ -78,10 +78,12 @@ def _smart(url, tries):
         return _random(url)
 
     title = soup.title.string
+    if title is None:
+        return _random(url)
 
     words = [word.lower() for word in
-                 [word.strip() for word in title.split()]
-             if len(word) > 4 and word[0] != '&']
+                [word.strip() for word in title.split()]
+                if len(word) > 4 and word[0] != '&']
 
     # that works for Sphinx :)
     if len(words) > 1:
@@ -89,7 +91,7 @@ def _smart(url, tries):
     elif len(words) == 1:
         short = words[0]
     else:
-        return url
+        return _random(url)
 
     if tries > 0:
         short += '-' + str(tries)
